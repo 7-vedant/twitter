@@ -1,0 +1,39 @@
+*{
+    font-family: SF Compact Rounded;
+    /* font-family: Gilroy; */
+    /* background-color: #000; */
+}
+
+body{
+    background-color: #000;
+}
+
+body textarea{
+    background-color: #000;
+    color: #fff;
+}
+
+#id_username{
+    background: #000;
+    color: #fff;
+}
+
+#id_email{
+    background: #000;
+    color: #fff;
+}
+
+#id_password{
+    background: #000;
+    color: #fff;
+}
+
+#id_password1{
+    background: #000;
+    color: #fff;
+}
+
+#id_password2{
+    background: #000;
+    color: #fff;
+}

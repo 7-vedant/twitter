@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+ <div class='container mx-auto'>
+    <h2 class='font-light text-[2vw]'>Register Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="inline-flex items-center bg-emerald-600 border-0 py-1 px-3 focus:outline-none active:bg-emerald-700 rounded text-base mt-4 md:mt-0">Register</button>
+    </form>
+    <p>Aready have Account? <a href="{% url 'login' %}"> Login Here </a></p>
+</div> 
+
+{% comment %} <div class='container mx-auto'>
+<form>
+    {% csrf_token %}
+{% if form.non_field_errors %}
+{% csrf_token %}
+    <ul>
+      {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+   {% for hidden_field in form.hidden_fields %}
+    {% if hidden_field.errors %}
+      <ul>
+        {% for error in hidden_field.errors %}
+          <li class='bg-black'>(Hidden field {{ hidden_field.name }}) {{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {{ hidden_field }}
+  {% endfor %}
+
+  <table>
+    {% for field in form.visible_fields %}
+      <tr>
+        <th >{{ field.label_tag }}</th>
+        <td class='bg-black'>
+          {% if field.errors %}
+            <ul>
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          <div class='yo'>          
+            {{ field  }}
+          {% if field.help_text %}
+            <br />{{ field.help_text }} 
+          {% endif %}
+        </div>
+
+        </td>
+      </tr>
+    {% endfor %}
+  </table> 
+  <button type='submit' class="inline-flex items-center bg-emerald-600 border-0 py-1 px-3 focus:outline-none active:bg-emerald-700 rounded text-base mt-4 md:mt-0">Register</button>
+  <p>Aready have Account? <a href="{% url 'login' %}"> Login Here </a></p>
+</form>
+</div> {% endcomment %}
+{% endblock %}

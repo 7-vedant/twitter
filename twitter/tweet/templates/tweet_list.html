@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+ 
+{% block title %}
+Tweet List
+{% endblock %}
+
+{% block content %}
+<h1 class='text-center text-[2vw] mt-4 text-white font-semibold '>TWEETS</h1>
+<div class='container mx-auto font-[SF Pro Rounded]'>
+    <a class='font-light text-[2vw]' href="{% url 'tweet_create' %}">
+      <i class="ri-add-circle-fill"></i>
+    </a>
+    <div class='flex gap-4 flex-wrap'>
+    {% for tweet in tweets %}
+    
+  <div class="max-w-sm w-[30vh] h-[50vh] rounded overflow-hidden bg-slate-800 shadow-lg">
+    
+    <img src="{% if tweet.photo %} {{tweet.photo.url}} {% endif %}" class="object-cover w-full h-1/2"  alt="NOT FOUND" />
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">
+        {{tweet.user.username}}
+      </div>
+      <p class="text-gray-100 text-base">
+        {{tweet.text}}
+      </p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      {% if tweet.user == user %}
+      <a href="{% url 'tweet_edit' tweet.id %}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-emerald-700 mr-2 mb-2">EDIT</a>
+      <a href="{% url 'tweet_delete' tweet.id %}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2">DELETE</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+    
+</div>
+
+{% endblock %}

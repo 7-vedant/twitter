@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+ 
+{% block title %}
+Tweet List
+{% endblock %}
+
+{% block content %}
+    <div class='container mx-auto font-[SF Pro Rounded]'>
+    <h2 class='text-[2vw] font-light'>
+        {% if form.instance.pk %} Edit Tweet
+        {% else %} Create Tweet
+        {% endif %} 
+    </h2>
+
+    <form  method='post' enctype='multipart/form-data' >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='Submit' class="inline-flex items-center text-black bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base my-4 ">Submit
+        </button>
+        <a class='font-light text-lime-600' href="{% url 'tweet_list' %}"><i class="ri-arrow-left-line"></i> Back to Tweets</a>
+
+    </form>
+    
+</div>
+{% endblock %}
